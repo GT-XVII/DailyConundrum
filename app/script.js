@@ -5,7 +5,7 @@ const showRules = () => {
     if (blur.style.width === '' || blur.style.width === '0px' || blur.style.width === '0') {
         blur.style.width = '100vw';
         blur.style.height = '100vh';
-        blur.style.padding = '10%'
+        blur.style.padding = '10%';
 
         body.style.overflow = 'hidden';
 
@@ -21,17 +21,18 @@ const showRules = () => {
     console.log('button pressed');
 }
 
-let isTimerActive = false;
 
 class DailyConundrum {
     anagramArr = ['willygong','eatenturd','shaginbum'];
     answerArr = ['glowingly','untreated','ambushing'];
+    isTimerActive;
 
     constructor(){
         let i = Math.floor(Math.random() * this.anagramArr.length);
         this.anagram = this.anagramArr[i];
         this.answer = this.answerArr[i];
         this.listenToInput();
+        this.isTimerActive = false;
     }
 
     setAnagram() {
@@ -40,7 +41,7 @@ class DailyConundrum {
     }
 
     startTimer() {
-        if (isTimerActive) {
+        if (this.isTimerActive) {
             return;  
         }
 
@@ -54,13 +55,13 @@ class DailyConundrum {
             if (countdown < 0) {
                 clearInterval(timerInterval);
                 alert("Time's up!");
-                isTimerActive = false;  
+                this.isTimerActive = false;  
                 timerElement.style.pointerEvents = 'auto'; 
-                timerElement.innerText = "You didn't get the word!" 
+                timerElement.innerText = "You didn't get the word!";
             }
         }, 1000);
 
-        isTimerActive = true;  
+        this.isTimerActive = true;  
         timerElement.style.pointerEvents = 'none';
     }
 
@@ -79,26 +80,32 @@ class DailyConundrum {
     }
 
     handleGuess() {
-        const userGuess = document.getElementById('userGuess').value.toLowerCase();
-
-        if (userGuess === this.answer.toLowerCase()) {
+        const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
+        const correctAnswer = this.answer.toLowerCase().trim();
+    
+        if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
         }
-
+    
         document.getElementById('userGuess').value = '';
-        this.setAnagram();
-        this.startTimer();
     }
 }
 
 
-const startGame = () => {
+document.addEventListener('DOMContentLoaded', function () {
     const game = new DailyConundrum();
-    game.setAnagram();
-    game.startTimer();
-}
+    const startButton = document.getElementById('startButton');
+    const startGame = () => {
+        game.setAnagram();
+        game.startTimer();
+    }
+
+    startButton.addEventListener('click', () => {startGame()});
+});
+
+
 
 
 const clearField = () => {
