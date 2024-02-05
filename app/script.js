@@ -5,6 +5,7 @@ const showRules = () => {
     if (blur.style.width === '' || blur.style.width === '0px' || blur.style.width === '0') {
         blur.style.width = '100vw';
         blur.style.height = '100vh';
+        blur.style.padding = '10%'
 
         body.style.overflow = 'hidden';
 
@@ -12,6 +13,7 @@ const showRules = () => {
     } else {
         blur.style.width = '0px';
         blur.style.height = '0px';
+        blur.style.padding = '';
 
         body.style.overflow = 'auto';
     }
