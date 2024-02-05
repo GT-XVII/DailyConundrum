@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+#anagram {
+    margin-top: 3ch;
+    font-family:'Courier New', Courier, monospace;
+}
+
 
 
 #blur {
@@ -23,6 +28,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#checkGuess {
+    background-color:  rgb(65, 211, 255);
+    height: 6ch;
+    width: 17ch;
+    border-radius: 3ch;
+    border: solid;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#checkGuess:hover {
+    cursor: pointer;
 }
 
 .frame {
@@ -79,7 +97,7 @@
     color: white;
 }
 
-#timer {
+#startButton{
     background-color: rgb(65, 211, 255);
     position: relative;
     width: 16ch;
@@ -90,8 +108,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-#timer:hover {
+#startButton:hover {
+    cursor: pointer;
+}
+
+#userGuess {
+    margin: 3ch;
+    font-family: 'Courier New', Courier, monospace;
+    width: 30ch;
+}
+
+#userGuess:hover {
     cursor: pointer;
 }

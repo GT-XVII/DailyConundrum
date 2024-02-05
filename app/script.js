@@ -45,7 +45,7 @@ class DailyConundrum {
         }
 
         let countdown = 30;
-        const timerElement = document.getElementById('timer');
+        const timerElement = document.getElementById('startButton');
 
         const timerInterval = setInterval(() => {
             timerElement.innerText = `Time left: ${countdown}` ;
