@@ -23,26 +23,45 @@ const showRules = () => {
 
 let isTimerActive = false;
 
-const startTimer = () => {
-    if (isTimerActive) {
-        return;  
+class DailyConundrum {
+    anagramArr = ['willygong','eatenturd','shaginbum'];
+    constructor(){
+        this.anagram = this.anagramArr[Math.floor(Math.random() * this.anagramArr.length)];
     }
 
-    let countdown = 30;
-    const timerElement = document.getElementById('timer');
+    setAnagram() {
+        const anagramElement = document.getElementById('anagram');
+        anagramElement.innerText = this.anagram;
+    }
 
-    const timerInterval = setInterval(() => {
-        timerElement.innerText = `Time left: ${countdown}` ;
-        countdown--;
-
-        if (countdown < 0) {
-            clearInterval(timerInterval);
-            alert("Time's up!");
-            isTimerActive = false;  
-            timerElement.style.pointerEvents = 'auto';  
+    startTimer(){
+        if (isTimerActive) {
+            return;  
         }
-    }, 1000);
+    
+        let countdown = 30;
+        const timerElement = document.getElementById('timer');
+    
+        const timerInterval = setInterval(() => {
+            timerElement.innerText = `Time left: ${countdown}` ;
+            countdown--;
+    
+            if (countdown < 0) {
+                clearInterval(timerInterval);
+                alert("Time's up!");
+                isTimerActive = false;  
+                timerElement.style.pointerEvents = 'auto'; 
+                timerElement.innerText = "You didn't get the word!" 
+            }
+        }, 1000);
+    
+        isTimerActive = true;  
+        timerElement.style.pointerEvents = 'none';
+    }
+}
 
-    isTimerActive = true;  
-    timerElement.style.pointerEvents = 'none';
+const startGame = () => {
+    const game = new DailyConundrum();
+    game.setAnagram();
+    game.startTimer();
 }
