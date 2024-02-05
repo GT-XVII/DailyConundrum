@@ -83,13 +83,10 @@ class DailyConundrum {
 
         if (userGuess === this.answer.toLowerCase()) {
             alert('Congratulations! You got the word!');
-            // Additional actions for a correct answer, such as updating score or moving to the next level
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
-            // Additional actions for an incorrect answer, such as deducting points or giving another chance
         }
 
-        // Reset the input field and start a new game (if needed)
         document.getElementById('userGuess').value = '';
         this.setAnagram();
         this.startTimer();
