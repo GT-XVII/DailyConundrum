@@ -12,7 +12,13 @@
         <img src="./assets/Daily_Logo.png" height="45" width="45">
         <h1>Welcome to Daily Conundrum</h1>
     </div>
-    <div id="blur" onclick="showRules()"></div>
+    <div id="blur" onclick="showRules()">
+        <div class="rules_text">
+            The rules of daily conundrum are simple: you get a scrambled word of 9 characters.
+            It is up to you to find the word hidden within the anagram.
+        </div>
+    
+    </div>
     <div class="frame">
         <div class="menuContainer">
             <a>Game</a>
@@ -23,6 +29,7 @@
         </div>
         <div class="bodyContainer">
             <div class="Game"> Here comes the game</div>
+            <div id="timer" onclick="startTimer()">Start the Clock!</div>
         </div>
     </div>
 </body>
