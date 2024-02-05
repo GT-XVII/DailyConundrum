@@ -1,9 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Conundrum</title>
-    <link rel="stylesheet" href="mystyle.css">
-    <script src="./app/script.js"></script>
-</head>
+<!doctype html>
+<html>
+    <head>
+        {% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <title>{% block title %}Daily Conundrum{% endblock %}</title>
+        {% endblock %}
+      </head>
+    <body>
+        <div id="content">{% block content %}{% endblock %}</div>
+        <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2024 by <a href="http://domain.invalid/">you</a>.
+        {% endblock %}
+        </div>
+    </body>
+</html>
