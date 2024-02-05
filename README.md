@@ -14,10 +14,7 @@ Install the Python Extension for VS Code:
 
 Open VS Code, go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
 Search for 'Python' and install the extension published by Microsoft.
-Create a New Project Folder:
 
-Create a new folder on your computer where your project will reside.
-Open this folder in VS Code by using File > Open Folder.
 Set Up a Virtual Environment:
 
 Open the VS Code terminal by using Terminal > New Terminal.
