@@ -10,7 +10,7 @@ const showRules = () => {
         body.style.overflow = 'hidden';
 
         blur.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
+    } else {    
         blur.style.width = '0px';
         blur.style.height = '0px';
         blur.style.padding = '';
