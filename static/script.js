@@ -105,9 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
     startButton.addEventListener('click', () => {startGame()});
 });
 
-
-
-
 const clearField = () => {
     const textfield = document.getElementById('userGuess');
     if(textfield.value === 'Type your guess here'){

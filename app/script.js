@@ -85,12 +85,13 @@ class DailyConundrum {
     
         if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
-        } else {
-            alert('Oops! That\'s not the correct word. Try again!');
+            return true;
         }
-    
+        alert('Oops! That\'s not the correct word. Try again!');
         document.getElementById('userGuess').value = '';
+        return false;
     }
+
 }
 
 document.addEventListener('DOMContentLoaded', function () {
