@@ -45,7 +45,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 18ch 1fr;
-    position: relative;
+    position: fixed;
     top: 50px;
     height: 100vh;
 }
