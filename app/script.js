@@ -93,7 +93,6 @@ class DailyConundrum {
     }
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
     const game = new DailyConundrum();
     const startButton = document.getElementById('startButton');
@@ -104,9 +103,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startButton.addEventListener('click', () => {startGame()});
 });
-
-
-
 
 const clearField = () => {
     const textfield = document.getElementById('userGuess');

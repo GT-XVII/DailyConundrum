@@ -27,10 +27,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #F9F7F7;
 }
 
 #checkGuess {
-    background-color: rgb(65, 211, 255);
+    background-color: #3F72AF;
     font-family: 'Courier New', Courier, monospace;
     border: solid;
     cursor: pointer;
@@ -58,7 +59,7 @@
     padding-left: 6ch;
     overflow: hidden;
     overflow-y: hidden;
-    background-color: white;
+    background-color: #3F72AF;
 }
 
 .header img {
@@ -76,10 +77,11 @@
 
 .menuContainer {
     text-align: center;
+    background-color: #DBE2EF;
 }
 
 .menuContainer a {
-    border: 2px solid black;
+    border: 2px solid #112D4E;
     display: block;
     font-family: 'Courier New', Courier, monospace;
     margin: 1ch;
@@ -90,12 +92,13 @@
 
 .menuContainer a:hover {
     cursor: pointer;
-    background-color: rgb(65, 211, 255);
+    background-color: #3F72AF;
     color: white;
+    font-weight: bold;
 }
 
 #startButton {
-    background-color: rgb(65, 211, 255);
+    background-color: #3F72AF;
     position: relative;
     width: 16ch;
     height: 6ch;
@@ -118,4 +121,5 @@
     font-family: 'Courier New', Courier, monospace;
     width: 30ch;
     text-align: center;
+    border: 1px solid #DBE2EF;
 }
