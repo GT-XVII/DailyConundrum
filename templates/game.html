@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
 
 <div class="header">
     <img src="{{ url_for('static', filename='assets/Daily_Logo.png') }}" height="45" width="45">
