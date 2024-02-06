@@ -1,20 +1,38 @@
 <!doctype html>
 <html>
     <head>
-        {% block head %}
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url_for('static', filename='mystyle.css') }}">
         <script src="{{ url_for('static', filename='script.js') }}"></script>
-        <title>{% block title %}Daily Conundrum{% endblock %}</title>
-        {% endblock %}
+        <title>Daily Conundrum</title>
       </head>
-    <body>
-        <div id="content">{% block content %}{% endblock %}</div>
-        <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2024 by <a href="http://domain.invalid/">you</a>.
-        {% endblock %}
+      <body>
+        <div class="header">
+            <img src="./static/Daily_Logo.png" height="45" width="45">
+            <h1>Welcome to Daily Conundrum</h1>
+        </div>
+        <div id="blur" onclick="showRules()">
+            <div class="rules_text">
+                The rules of daily conundrum are simple: you get a scrambled word of 9 characters.
+                It is up to you to find the word hidden within the anagram.
+            </div>
+        
+        </div>
+        <div class="frame">
+            <div class="menuContainer">
+                <a>Game</a>
+                <a>Scoreboard</a>
+                <a onclick="showRules()">How to Play</a>
+                <a>About</a>
+                <a>Contact</a>
+            </div>
+            <div class="bodyContainer">
+                <div id="startButton">Start the game</div>
+                <div id="anagram">Here will the anagram apear</div>
+                <input type="text" value="Type your guess here" id="userGuess" onclick="clearField()">
+                <button id="checkGuess">check your guess</button>
+            </div>
         </div>
     </body>
-</html>
+    </html>

@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: ninja2
+Version: 0.1
+Summary: Jinja2 command line client
+Home-page: https://github.com/sspreitzer/ninja2
+Download-URL: https://github.com/sspreitzer/ninja2/tarball/0.1
+Author: Sascha Spreitzer
+Author-email: sascha@spreitzer.ch
+License: MIT
+Keywords: ninja2 jinja2 python json yaml
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 2
+Requires-Dist: Jinja2
+
