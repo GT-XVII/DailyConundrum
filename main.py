@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages
 from flask_bcrypt import Bcrypt
 import json
 
@@ -26,7 +26,7 @@ def validate_login(username, password):
     try:
         with open('users.json', 'r') as file:
             users = json.load(file)
-            hashed_password = users.get(username)
+            hashed_password = hashed_password = users[username]['password']
             if hashed_password:
                 return bcrypt.check_password_hash(hashed_password, password)
             return False
@@ -36,34 +36,52 @@ def validate_login(username, password):
 def hash_password(password):
     return bcrypt.generate_password_hash(password).decode('utf-8')
 
-def add_user(username, password):
+def add_user(username, email, password):
     hashed_password = hash_password(password)
-    new_user = {username: hashed_password}
+    new_user = {username: {"email": email, "password": hashed_password}}
 
     try:
         with open('users.json', 'r+') as file:
             users = json.load(file)
-            if username in users:
-                print(f"User {username} already exists.")
-                return
+            
+            # Check if username or email already exists
+            if username in users or any(user["email"] == email for user in users.values()):
+                get_flashed_messages(with_categories=True)
+                return "Username or email already exists." 
+            
             users.update(new_user)
             file.seek(0)
             json.dump(users, file, indent=4)
-            print(f"User {username} added successfully.")
+            return "User added successfully."
     except FileNotFoundError:
         with open('users.json', 'w') as file:
             json.dump(new_user, file, indent=4)
-            print(f"User {username} added successfully.")
+            return "User added successfully."
+
     
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form['username']
-        password = request.form['password']
-        add_user(username, password)
-        return redirect(url_for('login'))
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        if not username or not email or not password:
+            get_flashed_messages(with_categories=True)
+            flash("Username, email, and password cannot be empty.", "error")
+            return render_template("register.html")
+
+        message = add_user(username, email, password)
+        if message == "User added successfully.":
+            get_flashed_messages(with_categories=True)
+            flash("Account created successfully. Please log in.", "success")
+            return redirect(url_for('login'))
+        else:
+            flash(message, "error")
 
     return render_template("register.html")
+
+
 
 
 

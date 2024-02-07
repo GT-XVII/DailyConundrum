@@ -1,3 +1,10 @@
 {
-    "testuser": "$2y$04$FdD7WrOItNgw0qhQ1MC.YOlEXMnnJnivN0fBqunt8eTFKBX4CCIWq"
+    "testuser": {
+        "email": "testuser@gmail.com",
+        "password": "$2y$04$FdD7WrOItNgw0qhQ1MC.YOlEXMnnJnivN0fBqunt8eTFKBX4CCIWq"
+    },
+    "Ruan": {
+        "email": "wohnungdreyer@gmail.com",
+        "password": "$2b$12$s5fjpXNhTrPi.gcNnQ9e2eh4zQkNlgdeWzmWgYPoNNThideVjNSZm"
+    }
 }

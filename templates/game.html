@@ -1,21 +1,21 @@
-{% extends "base.html" %}
-{% block head %}
-  {{ super() }}
-  <script src="{{ url_for('static', filename='game.js') }}"></script>
-{% endblock %}
+{% extends "base.html" %} 
+
+{% block head %} 
+{{ super() }}
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %} 
 
 {% block content %}
 <div class="frame">
   <div class="whiteSpaceMenu"></div>
   <div class="bodyContainer">
-      <div id="startButton"> Start the game</div>
-      <div id="anagram">Here will the anagram appear!</div>
-      <input type="text" id="userGuess">
-      <div id="checkGuess">Check your Word</div>
-      <div id="playerName"></div>
-      <div id="score"></div>
-      <a href="/scoreboard">Scoreboard</a>
+    <div id="startButton">Start the game</div>
+    <div id="anagram">Here will the anagram appear!</div>
+    <input type="text" id="userGuess" />
+    <div id="checkGuess">Check your Word</div>
+    <div id="playerName"></div>
+    <div id="score"></div>
+    <a href="/scoreboard">Scoreboard</a>
   </div>
 </div>
-
 {% endblock %}

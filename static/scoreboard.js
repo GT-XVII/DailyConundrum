@@ -1,7 +1,3 @@
-//if (sessionStorage.getItem('AuthenticationState') === null) {
-//    window.location.href = "/AccessDenied.html";
-//}
-
 const addScore = (name, score) => {
     const scoreboard = document.querySelector('ol');
     const scoreElement = document.createElement('li');

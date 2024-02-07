@@ -12,6 +12,14 @@
       <div class="card my-5">
         <form class="card-body cardbody-color p-lg-5" method="post">
           <div class="text-center">
+            <div>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                      {% for category, message in messages %}
+                          <div class="alert alert-{{ category }}">{{ message }}</div>
+                      {% endfor %}
+                  {% endif %}
+              {% endwith %}
             <img
               src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
               class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
