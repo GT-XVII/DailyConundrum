@@ -2,6 +2,7 @@
 {% block head %} 
   {{ super() }}
   <script src="{{ url_for('static', filename='login.js') }}"></script>
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
 {% endblock %} 
 
 {% block content %}
@@ -9,7 +10,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="card my-5">
-        <form class="card-body cardbody-color p-lg-5">
+        <form class="card-body cardbody-color p-lg-5" form action="/" method="post">
           <div class="text-center">
             <img
               src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
@@ -24,6 +25,8 @@
               type="text"
               class="form-control"
               id="userNameInput"
+              id="username"
+              name="username"
               aria-describedby="emailHelp"
               placeholder="User Name"
             />
@@ -33,6 +36,7 @@
               type="password"
               class="form-control"
               id="password"
+              name="password"
               placeholder="password"
             />
           </div>
@@ -40,6 +44,7 @@
             <button type="submit" class="btn btn-color px-5 mb-5 w-100" id="submitButton">
               Login
             </button>
+            <button type="submit" class="btn btn-color px-5 mb-5 w-100" onclick="event.preventDefault(); validateForm();">Login</button>
           </div>
           <div id="emailHelp" class="form-text text-center mb-5 text-dark">
             Not Registered?
