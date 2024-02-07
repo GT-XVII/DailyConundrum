@@ -1,24 +1,48 @@
 class DailyConundrum {
-    anagramArr = ['willygong','eatenturd','shaginbum'];
-    answerArr = ['glowingly','untreated','ambushing'];
+    wordArr;
+    wordsPlayed;
     isTimerActive;
     countdown;
     storedScores;
     playerName;
+    score;
+    
 
     constructor(){
-        let i = Math.floor(Math.random() * this.anagramArr.length);
-        this.anagram = this.anagramArr[i];
-        this.answer = this.answerArr[i];
-        this.listenToInput();
+        this.wordArr = ['glowingly','untreated','ambushing','paparazzi','embezzled'];
+        this.wordsPlayed = [];
+        this.word = this.setWord();
         this.isTimerActive = false;
         this.countdown = 30;
         this.storedScores = this.loadScores();
         this.playerName = this.loadName();
+        this.score = 0;
+
+        this.listenToInput();
     }
-    setAnagram() {
-        const anagramElement = document.getElementById('anagram');
-        anagramElement.innerText = this.anagram;
+
+    setWord() {
+        const i = Math.floor(Math.random()*this.wordArr.length);
+        const word = this.wordArr[i];
+        return word
+    }
+
+    storeWordPlayed() {
+        this.wordsPlayed.push(this.word);
+        console.log(this.wordsPlayed);
+    }
+
+    showAnagram() {
+        const anagram = document.getElementById('anagram');
+        const wordArr = this.word.split('');
+        for(let s = 0; s < 10; s++){
+            const i = Math.floor(Math.random() * wordArr.length);
+            const j = Math.floor(Math.random() * wordArr.length);
+            let temp = wordArr[i];
+            wordArr[i] = wordArr[j];
+            wordArr[j] = temp;
+        }
+        anagram.innerText = wordArr.join('');
     }
 
     startTimer() {
@@ -38,6 +62,7 @@ class DailyConundrum {
                 this.isTimerActive = false;  
                 timerElement.style.pointerEvents = 'auto'; 
                 timerElement.innerText = "You didn't get the word!";
+                this.saveScore(this.playerName, this.score);
             }
         }, 1000);
 
@@ -61,14 +86,17 @@ class DailyConundrum {
 
     handleGuess() {
         const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
-        const correctAnswer = this.answer.toLowerCase().trim();
+        const correctAnswer = this.word.toLowerCase().trim();
         const scoreElement = document.getElementById('score');
     
         if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
-            const score = this.countdown;
-            scoreElement.innerText = `Score: ${score}`;
-            this.saveScore(this.playerName, score);
+            this.score += this.countdown;
+            scoreElement.innerText = `Score: ${this.score}`;
+            this.countdown = 30;
+            this.storeWordPlayed();
+            this.word = this.setWord();
+            this.showAnagram();
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
         }
@@ -94,18 +122,18 @@ class DailyConundrum {
         }
         
     }
+
+    startGame() {
+        this.startTimer();
+        this.showAnagram();
+    }   
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
     const game = new DailyConundrum();
     const startButton = document.getElementById('startButton');
-    const startGame = () => {
-        game.setAnagram();
-        game.startTimer();
-    }
-
-    startButton.addEventListener('click', () => {startGame()});
+    startButton.addEventListener('click', () => {game.startGame();});
 });
 
 const clearField = () => {
