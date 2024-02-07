@@ -35,10 +35,10 @@ class DailyConundrum {
     showAnagram() {
         const anagram = document.getElementById('anagram');
         const wordArr = this.word.split('');
-        for(let s = 0; s < 10; s++){
-            const i = Math.floor(Math.random() * wordArr.length);
-            const j = Math.floor(Math.random() * wordArr.length);
-            let temp = wordArr[i];
+        for(let i = wordArr.length; i > 0; i--){
+            const j = Math.floor(Math.random() * (i+1));
+            
+            const temp = wordArr[i];
             wordArr[i] = wordArr[j];
             wordArr[j] = temp;
         }
@@ -126,7 +126,7 @@ class DailyConundrum {
     startGame() {
         this.startTimer();
         this.showAnagram();
-    }   
+    }  
 }
 
 
