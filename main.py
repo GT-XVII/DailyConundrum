@@ -102,6 +102,12 @@ def game():
         return redirect(url_for('login'))
     return render_template("game.html")
 
+@app.route("/scoreboard", methods=["GET"])
+def scoreboard():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template("scoreboard.html")
+
 @app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
