@@ -81,10 +81,6 @@ def register():
 
     return render_template("register.html")
 
-
-
-
-
 @app.route("/", methods=["GET", "POST"])
 def login():
     error = None
