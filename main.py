@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages
+from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages, jsonify
 from flask_bcrypt import Bcrypt
 import json
 
@@ -101,12 +101,6 @@ def game():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     return render_template("game.html")
-
-@app.route("/scoreboard", methods=["GET"])
-def scoreboard():
-    if not session.get('logged_in'):
-        return redirect(url_for('login'))
-    return render_template("scoreboard.html")
 
 @app.route("/about", methods=["GET"])
 def about():
