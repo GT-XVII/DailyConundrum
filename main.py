@@ -32,19 +32,44 @@ def validate_login(username, password):
             return False
     except FileNotFoundError:
         return False
+  
+def hash_password(password):
+    return bcrypt.generate_password_hash(password).decode('utf-8')
+
+def add_user(username, password):
+    hashed_password = hash_password(password)
+    new_user = {username: hashed_password}
+
+    try:
+        with open('users.json', 'r+') as file:
+            users = json.load(file)
+            if username in users:
+                print(f"User {username} already exists.")
+                return
+            users.update(new_user)
+            file.seek(0)
+            json.dump(users, file, indent=4)
+            print(f"User {username} added successfully.")
+    except FileNotFoundError:
+        with open('users.json', 'w') as file:
+            json.dump(new_user, file, indent=4)
+            print(f"User {username} added successfully.")
     
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
-        save_credentials(username, password)
+        add_user(username, password)
         return redirect(url_for('login'))
 
     return render_template("register.html")
 
+
+
 @app.route("/", methods=["GET", "POST"])
 def login():
+    error = None
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
@@ -53,9 +78,9 @@ def login():
             session['logged_in'] = True
             return redirect(url_for('game'))
         else:
-            return "Invalid credentials"
+            error = "Incorrect login details"
 
-    return render_template("login.html")
+    return render_template("login.html", error=error)
 
 @app.route("/game", methods=["GET"])
 def game():

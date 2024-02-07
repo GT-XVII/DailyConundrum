@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+<script src="{{ url_for('static', filename='login.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="frame">
+  <div class="whiteSpaceMenu"></div>
+  <div class="bodyContainer">
+<form method="post" action="/register">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="username" class="form-control" id="username" placeholder="username">
+    </div>
+        <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div>
+  </div>
+</div>
+{% endblock %}
