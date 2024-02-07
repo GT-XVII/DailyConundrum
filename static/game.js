@@ -1,4 +1,4 @@
-class DailyConundrum {
+/*class DailyConundrum {
     anagramArr = ['willygong','eatenturd','shaginbum'];
     answerArr = ['glowingly','untreated','ambushing'];
     isTimerActive;
@@ -89,4 +89,4 @@ const clearField = () => {
         return;
     }
   
-}
+}*/
