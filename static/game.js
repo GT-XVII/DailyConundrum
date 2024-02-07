@@ -4,6 +4,7 @@ class DailyConundrum {
     isTimerActive;
     countdown;
     storedScores;
+    playerName;
 
     constructor(){
         let i = Math.floor(Math.random() * this.anagramArr.length);
@@ -13,9 +14,8 @@ class DailyConundrum {
         this.isTimerActive = false;
         this.countdown = 30;
         this.storedScores = this.loadScores();
-        this.saveScores()
+        this.playerName = this.loadName();
     }
-
     setAnagram() {
         const anagramElement = document.getElementById('anagram');
         anagramElement.innerText = this.anagram;
@@ -62,10 +62,13 @@ class DailyConundrum {
     handleGuess() {
         const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
         const correctAnswer = this.answer.toLowerCase().trim();
-        const score = document.getElementById('score');
+        const scoreElement = document.getElementById('score');
+    
         if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
-            score.innerText = `Score: ${this.countdown}`;
+            const score = this.countdown;
+            scoreElement.innerText = `Score: ${score}`;
+            this.saveScore(this.playerName, score);
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
         }
@@ -73,20 +76,23 @@ class DailyConundrum {
         document.getElementById('userGuess').value = '';
     }
 
-    saveScores() {
-        const ScoresData = [{name: 'Ruan', score: 34},{name: 'testuser', score: 22}]
-        localStorage.setItem('scores', JSON.stringify(ScoresData));
+    saveScore(playerName, score) {
+        this.storedScores.push({ name: playerName, score: score });
+        localStorage.setItem('scores', JSON.stringify(this.storedScores));
     }
 
     loadScores() {
-        this.storedScores = JSON.parse(localStorage.getItem('scores'));
-        if (this.storedScores) {
-            this.storedScores.forEach(itemData => {
-            addItem(itemData.name, itemData.score);
-            });
-            return this.storedScores
+        return JSON.parse(localStorage.getItem('scores')) || [];
+    }
+    
+    loadName() {
+        const storedName = JSON.parse(localStorage.getItem('storedName'));
+        if (storedName) {
+            const playerName = document.getElementById('playerName');
+            playerName.innerText = storedName;
+            return playerName.innerText;
         }
-        return null;
+        
     }
 }
 
@@ -112,14 +118,4 @@ const clearField = () => {
   
 }
 
-const loadName = () => {
-    const storedName = JSON.parse(localStorage.getItem('storedName'));
-    if (storedName) {
-        const playerName = document.getElementById('playerName');
-        playerName.innerText = storedName;
-    }
-}
 
-window.addEventListener('load', () => {
-    loadName();
-});

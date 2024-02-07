@@ -9,10 +9,9 @@ const addScore = (name, score) => {
 const loadScores = () => {
     const storedScores = JSON.parse(localStorage.getItem('scores'));
     if (storedScores) {
-        storedScores.forEach(itemData => {
+        storedScores.sort((a,b) => b.score - a.score).forEach(itemData => {
         addScore(itemData.name, itemData.score);
         });
-        return this.storedScores
     }
     return null;
 }
