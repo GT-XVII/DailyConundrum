@@ -1,8 +1,47 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_bcrypt import Bcrypt
+import json
 
 app = Flask(__name__)
 
+bcrypt = Bcrypt(app)
+
 app.secret_key = 'webengineering'
+
+def save_credentials(username, password):
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    new_user = {username: hashed_password}
+
+    try:
+        with open('users.json', 'r+') as file:
+            users = json.load(file)
+            users.update(new_user)
+            file.seek(0)
+            json.dump(users, file)
+    except FileNotFoundError:
+        with open('users.json', 'w') as file:
+            json.dump(new_user, file)
+            
+def validate_login(username, password):
+    try:
+        with open('users.json', 'r') as file:
+            users = json.load(file)
+            hashed_password = users.get(username)
+            if hashed_password:
+                return bcrypt.check_password_hash(hashed_password, password)
+            return False
+    except FileNotFoundError:
+        return False
+    
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        save_credentials(username, password)
+        return redirect(url_for('login'))
+
+    return render_template("register.html")
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -10,10 +49,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
 
-        test_username = "testuser"
-        test_password = "testpass"
-
-        if username == test_username and password == test_password:
+        if validate_login(username, password):
             session['logged_in'] = True
             return redirect(url_for('game'))
         else:

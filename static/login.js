@@ -9,7 +9,9 @@ function validateForm() {
         // If validation fails, alert the user
         alert("Please enter both username and password");
     }
-}const saveName = () => {
+}
+
+const saveName = () => {
     const playerName = document.getElementById('userNameInput').value;
     localStorage.setItem('storedName', JSON.stringify(playerName));
 }
