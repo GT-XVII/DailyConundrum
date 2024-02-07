@@ -1,0 +1,17 @@
+.scoreElement {
+    background-color: lightgrey;
+    padding: 1ch;
+    border: 1px solid darkgray;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+    flex-direction: column;
+}
+
+.scoreboardHeader {
+    padding: 2ch;
+    background-color: darkcyan;
+}

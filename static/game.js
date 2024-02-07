@@ -1,4 +1,4 @@
-/*class DailyConundrum {
+class DailyConundrum {
     anagramArr = ['willygong','eatenturd','shaginbum'];
     answerArr = ['glowingly','untreated','ambushing'];
     isTimerActive;
@@ -61,6 +61,7 @@
     
         if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
+            const score = this.countdown;
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
         }
@@ -89,4 +90,4 @@ const clearField = () => {
         return;
     }
   
-}*/
+}

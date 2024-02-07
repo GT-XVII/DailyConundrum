@@ -5,9 +5,14 @@
 {% endblock %}
 
 {% block content %}
+<div class="frame">
+  <div class="whiteSpaceMenu"></div>
   <div class="bodyContainer">
-      <div class="Game"> Here comes the game</div>
-      <div id="timer" onclick="startTimer()">Start the Clock!</div>
+      <div id="startButton"> Start the game</div>
+      <div id="anagram">Here will the anagram appear!</div>
+      <input type="text" id="userGuess">
+      <div id="checkGuess">Check your Word</div>
   </div>
+</div>
 
 {% endblock %}

@@ -28,6 +28,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #F9F7F7;
+    z-index: 0;
 }
 
 #checkGuess {
@@ -39,6 +40,10 @@
     height: 6ch;
     border-radius: 3ch;
     margin: 2ch;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .frame {
@@ -48,6 +53,7 @@
     position: fixed;
     top: 50px;
     height: 100vh;
+    z-index: 0;
 }
 
 .header {
@@ -76,8 +82,12 @@
 }
 
 .menuContainer {
+    width: 18ch;
+    height: 100%;
+    position: relative;
     text-align: center;
     background-color: #DBE2EF;
+    left: 0;
 }
 
 .menuContainer a {
@@ -122,4 +132,10 @@
     width: 30ch;
     text-align: center;
     border: 1px solid #DBE2EF;
+}
+
+.whiteSpaceMenu{
+    width: 18ch;
+    height: 0px;
+    z-index: 0;
 }
