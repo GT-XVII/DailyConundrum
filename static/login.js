@@ -12,7 +12,7 @@ function validateForm() {
 }
 
 const saveName = () => {
-    const playerName = document.getElementById('userNameInput').value;
+    const playerName = document.getElementById('username').value;
     localStorage.setItem('storedName', JSON.stringify(playerName));
 }
 
