@@ -1,8 +1,9 @@
-if (sessionStorage.getItem('AuthenticationState') === null) {
-    window.location.href = "/AccessDenied.html";
-}
+//if (sessionStorage.getItem('AuthenticationState') === null) {
+//    window.location.href = "/AccessDenied.html";
+//}
 
 const addScore = (name, score) => {
+    const scoreboard = document.querySelector('ol');
     const scoreElement = document.createElement('li');
     scoreElement.className = 'scoreElement';
     scoreElement.innerText = `${name} scored ${score} points.`;
@@ -23,6 +24,5 @@ const loadScores = () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const scoreboard = document.querySelector('ol');
     loadScores();
 });
