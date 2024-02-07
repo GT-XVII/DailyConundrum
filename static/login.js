@@ -1,5 +1,5 @@
 function validateForm() {
-    var inputname = $('#username').val();
+    var inputname = $('#userNameInput').val();
     var inputpassword = $('#password').val();
 
     if (inputname && inputpassword) {

@@ -2,6 +2,7 @@ class DailyConundrum {
     anagramArr = ['willygong','eatenturd','shaginbum'];
     answerArr = ['glowingly','untreated','ambushing'];
     isTimerActive;
+    countdown;
 
     constructor(){
         let i = Math.floor(Math.random() * this.anagramArr.length);
@@ -9,6 +10,7 @@ class DailyConundrum {
         this.answer = this.answerArr[i];
         this.listenToInput();
         this.isTimerActive = false;
+        this.countdown = 30;
     }
 
     setAnagram() {
@@ -21,14 +23,13 @@ class DailyConundrum {
             return;  
         }
 
-        let countdown = 30;
         const timerElement = document.getElementById('startButton');
 
         const timerInterval = setInterval(() => {
-            timerElement.innerText = `Time left: ${countdown}` ;
-            countdown--;
+            timerElement.innerText = `Time left: ${this.countdown}` ;
+            this.countdown--;
 
-            if (countdown < 0) {
+            if (this.countdown < 0) {
                 clearInterval(timerInterval);
                 alert("Time's up!");
                 this.isTimerActive = false;  
@@ -58,10 +59,10 @@ class DailyConundrum {
     handleGuess() {
         const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
         const correctAnswer = this.answer.toLowerCase().trim();
-    
+        const score = document.getElementById('score');
         if (userGuess === correctAnswer) {
             alert('Congratulations! You got the word!');
-            const score = this.countdown;
+            score.innerText = `Score: ${this.countdown}`;
         } else {
             alert('Oops! That\'s not the correct word. Try again!');
         }
@@ -70,8 +71,8 @@ class DailyConundrum {
     }
 
     saveScore() {
-        const score = document.querySelectorAll('.score');
-        localStorage.setItem('items', JSON.stringify(itemsData));
+        const score = document.getElementById('score');
+        localStorage.setItem('score', JSON.stringify(itemsData));
     }
 }
 
