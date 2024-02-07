@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages
 from flask_bcrypt import Bcrypt
 import json
 
@@ -26,10 +26,11 @@ def validate_login(username, password):
     try:
         with open('users.json', 'r') as file:
             users = json.load(file)
-            hashed_password = hashed_password = users[username]['password']
-            if hashed_password:
-                return bcrypt.check_password_hash(hashed_password, password)
-            return False
+            if username in users:
+                hashed_password = hashed_password = users[username]['password']
+                if hashed_password:
+                    return bcrypt.check_password_hash(hashed_password, password)
+                return False
     except FileNotFoundError:
         return False
   
@@ -112,9 +113,14 @@ def scoreboard():
 def about():
     return render_template("about.html")
 
-@app.route("/contact", methods=["GET"])
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
-    return render_template("contact.html")
+    submission_success = False
+    if request.method == 'POST':
+        submission_success = True
+        flash('Submission was successful. We will be in touch shortly!', 'success')
+        return redirect(url_for('contact'))
+    return render_template("contact.html", submission_success=submission_success)
 
 @app.route('/logout')
 def logout():

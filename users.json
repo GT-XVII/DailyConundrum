@@ -13,5 +13,10 @@
         "email": "casimirbomans@gmail.com",
         "password": "$2b$12$.VhV7ZL1UYEidjYAIL1uGuCO1.71YzJAgvtGJHUuD954kt0Fp.YbO",
         "points": 100
+    },
+    "henno": {
+        "email": "henno577@gmail.com",
+        "password": "$2b$12$0OZ2eC7Fx0rio8EGr8XIW.N/78a5zzMEV/3zspy7KIUeq8buBXVzG",
+        "points": 11100
     }
 }
