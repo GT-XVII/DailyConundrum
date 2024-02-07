@@ -3,6 +3,7 @@ class DailyConundrum {
     answerArr = ['glowingly','untreated','ambushing'];
     isTimerActive;
     countdown;
+    storedScores;
 
     constructor(){
         let i = Math.floor(Math.random() * this.anagramArr.length);
@@ -11,6 +12,8 @@ class DailyConundrum {
         this.listenToInput();
         this.isTimerActive = false;
         this.countdown = 30;
+        this.storedScores = this.loadScores();
+        this.saveScores()
     }
 
     setAnagram() {
@@ -70,9 +73,20 @@ class DailyConundrum {
         document.getElementById('userGuess').value = '';
     }
 
-    saveScore() {
-        const score = document.getElementById('score');
-        localStorage.setItem('score', JSON.stringify(itemsData));
+    saveScores() {
+        const ScoresData = [{name: 'Ruan', score: 34},{name: 'testuser', score: 22}]
+        localStorage.setItem('scores', JSON.stringify(ScoresData));
+    }
+
+    loadScores() {
+        this.storedScores = JSON.parse(localStorage.getItem('scores'));
+        if (this.storedScores) {
+            this.storedScores.forEach(itemData => {
+            addItem(itemData.name, itemData.score);
+            });
+            return this.storedScores
+        }
+        return null;
     }
 }
 
