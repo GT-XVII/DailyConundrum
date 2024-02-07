@@ -2,7 +2,6 @@
 {% block head %} 
   {{ super() }}
   <script src="{{ url_for('static', filename='login.js') }}"></script>
-  <script src="{{ url_for('static', filename='login.js') }}"></script>
 {% endblock %} 
 
 {% block content %}
@@ -48,7 +47,7 @@
             />
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-color px-5 mb-5 w-100" id="submitButton" onclick="event.preventDefault() validateForm();">Login</button>
+            <button type="submit" class="btn btn-color px-5 mb-5 w-100" id="submitButton" onclick="event.preventDefault(); validateForm();">Login</button>
           </div>
           {% if error %}
           <div class="alert alert-danger">{{ error }}</div>
