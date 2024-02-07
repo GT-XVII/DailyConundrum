@@ -68,6 +68,11 @@ class DailyConundrum {
     
         document.getElementById('userGuess').value = '';
     }
+
+    saveScore() {
+        const score = document.querySelectorAll('.score');
+        localStorage.setItem('items', JSON.stringify(itemsData));
+    }
 }
 
 
@@ -91,3 +96,15 @@ const clearField = () => {
     }
   
 }
+
+const loadName = () => {
+    const storedName = JSON.parse(localStorage.getItem('storedName'));
+    if (storedName) {
+        const playerName = document.getElementById('playerName');
+        playerName.innerText = storedName;
+    }
+}
+
+window.addEventListener('load', () => {
+    loadName();
+});
