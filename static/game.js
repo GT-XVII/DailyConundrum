@@ -13,6 +13,8 @@ class DailyConundrum {
             'glowingly','untreated','ambushing','paparazzi','embezzled','frustrate',
             'untwisted','suffering','mightiest','flickered','pointless','bothering',
             'postponed','itchyness','positions','provinces','rebooting','quickened',
+            'insurance','righteous','answering','waterfall','dragonfly','fractured',
+            'ducklings','godparent','proposing',
         ];
         this.wordsPlayed = [];
         this.word = this.setWord();
