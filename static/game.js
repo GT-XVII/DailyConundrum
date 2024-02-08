@@ -14,7 +14,7 @@ class DailyConundrum {
             'untwisted','suffering','mightiest','flickered','pointless','bothering',
             'postponed','itchyness','positions','provinces','rebooting','quickened',
             'insurance','righteous','answering','waterfall','dragonfly','fractured',
-            'ducklings','godparent','proposing',
+            'ducklings','godparent','proposing','dangerous','ponytails','dentistry',
         ];
         this.wordsPlayed = [];
         this.word = this.setWord();
