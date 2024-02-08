@@ -7,16 +7,17 @@ const addScore = (name, score) => {
 }
 
 const loadScores = () => {
-    const storedScores = JSON.parse(localStorage.getItem('scores'));
-    if (storedScores) {
-        storedScores.sort((a,b) => b.score - a.score).forEach(itemData => {
-        addScore(itemData.name, itemData.score);
+    const scoreboard = document.querySelector('ol');
+    const storedScores = JSON.parse(localStorage.getItem('scores')) || [];
+
+    if (storedScores.length === 0) {
+        scoreboard.innerText = 'No scores available.';
+    } else {
+        storedScores.sort((a, b) => b.score - a.score).forEach(itemData => {
+            addScore(itemData.name, itemData.score);
         });
     }
-    return null;
 }
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     loadScores();
