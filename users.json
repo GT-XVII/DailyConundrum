@@ -1,22 +1,18 @@
 {
     "testuser": {
         "email": "testuser@gmail.com",
-        "password": "$2y$04$FdD7WrOItNgw0qhQ1MC.YOlEXMnnJnivN0fBqunt8eTFKBX4CCIWq",
-        "points": 50
+        "password": "$2y$04$FdD7WrOItNgw0qhQ1MC.YOlEXMnnJnivN0fBqunt8eTFKBX4CCIWq"
     },
     "Ruan": {
         "email": "wohnungdreyer@gmail.com",
-        "password": "$2b$12$s5fjpXNhTrPi.gcNnQ9e2eh4zQkNlgdeWzmWgYPoNNThideVjNSZm",
-        "points": 50
+        "password": "$2b$12$s5fjpXNhTrPi.gcNnQ9e2eh4zQkNlgdeWzmWgYPoNNThideVjNSZm"
     },
     "CasimirG": {
         "email": "casimirbomans@gmail.com",
-        "password": "$2b$12$.VhV7ZL1UYEidjYAIL1uGuCO1.71YzJAgvtGJHUuD954kt0Fp.YbO",
-        "points": 100
+        "password": "$2b$12$.VhV7ZL1UYEidjYAIL1uGuCO1.71YzJAgvtGJHUuD954kt0Fp.YbO"
     },
     "henno": {
         "email": "henno577@gmail.com",
-        "password": "$2b$12$0OZ2eC7Fx0rio8EGr8XIW.N/78a5zzMEV/3zspy7KIUeq8buBXVzG",
-        "points": 11100
+        "password": "$2b$12$0OZ2eC7Fx0rio8EGr8XIW.N/78a5zzMEV/3zspy7KIUeq8buBXVzG"
     }
 }
