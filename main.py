@@ -45,7 +45,6 @@ def add_user(username, email, password):
         with open('users.json', 'r+') as file:
             users = json.load(file)
             
-            # Check if username or email already exists
             if username in users or any(user["email"] == email for user in users.values()):
                 get_flashed_messages(with_categories=True)
                 return "Username or email already exists." 
