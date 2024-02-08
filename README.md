@@ -20,12 +20,12 @@ python -m venv myenv
 After creating the virtual environment, you need to activate it.
 
 ## On Windows:
-"```cmd"
-myenv\Scripts\activate
+   ```cmd
+   myenv\Scripts\activate
 
 ## On macOS and Linux:
-"```bash"
-source myenv/bin/activate
+   ```bash
+   source myenv/bin/activate
 
 ### Continue the next steps:
 1. Clone the repository from the GitHub Repository Link.
