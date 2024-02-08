@@ -15,3 +15,7 @@
     padding: 2ch;
     background-color: darkcyan;
 }
+
+.bodyContainer{
+    overflow: scroll;
+}

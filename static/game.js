@@ -9,7 +9,11 @@ class DailyConundrum {
     
 
     constructor(){
-        this.wordArr = ['glowingly','untreated','ambushing','paparazzi','embezzled'];
+        this.wordArr = [
+            'glowingly','untreated','ambushing','paparazzi','embezzled','frustrate',
+            'untwisted','suffering','mightiest','flickered','pointless','bothering',
+            'postponed','itchyness','positions','provinces','rebooting','quickened',
+        ];
         this.wordsPlayed = [];
         this.word = this.setWord();
         this.isTimerActive = false;
@@ -22,8 +26,15 @@ class DailyConundrum {
     }
 
     setWord() {
-        const i = Math.floor(Math.random()*this.wordArr.length);
+        const i = Math.floor(Math.random()*(this.wordArr.length-1));
         const word = this.wordArr[i];
+        if(this.wordsPlayed.length === this.wordArr.length){
+            this.countdown = -1;
+        }
+        if(this.wordsPlayed.includes(word)){
+            console.log('ping');
+            this.setWord();
+        }
         return word
     }
 
@@ -126,6 +137,7 @@ class DailyConundrum {
     startGame() {
         this.startTimer();
         this.showAnagram();
+        this.wordsPlayed = [];
     }  
 }
 
