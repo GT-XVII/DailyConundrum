@@ -1,49 +1,34 @@
-# DailyConundrum
-A riddle in which a fanciful question is answered by a pun.
+# Flask Web Application Documentation
 
+## Overview
 
-Setting up Flask and a virtual environment in Visual Studio Code (VS Code) involves several steps. Here’s a step-by-step guide:
+This Flask application is a web-based platform designed for user registration, authentication, and interaction. It features user account management, a simple game, a scoreboard, an about page, and a contact form.
 
-Install Python:
+## Installation
 
-Ensure Python is installed on your system. You can download it from the Python website.
-Install VS Code:
+## Step 1: Install Python
 
-If you haven't already, download and install Visual Studio Code from the official website.
-Install the Python Extension for VS Code:
+First, ensure that Python is installed on your system. You can download it from [Python's official website](https://www.python.org/downloads/).
 
-Open VS Code, go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
-Search for 'Python' and install the extension published by Microsoft.
+## Step 2: Create a Virtual Environment
 
-Set Up a Virtual Environment:
+Navigate to your project directory in the terminal or command prompt. Then, create a virtual environment using the following command:
 
-Open the VS Code terminal by using Terminal > New Terminal.
+"```bash"
+python -m venv myenv 
 
-Create a new virtual environment by running the following command:
+After creating the virtual environment, you need to activate it.
 
-bash
-Copy code
-python -m venv venv
-Replace venv with whatever you want to name your virtual environment.
+## On Windows:
+"```cmd"
+myenv\Scripts\activate
 
-Activate the Virtual Environment:
+## On macOS and Linux:
+"```bash"
+source myenv/bin/activate
 
-In the VS Code terminal, activate the virtual environment by running:
-
-On Windows:
-bash
-Copy code
-.\venv\Scripts\Activate
-On macOS and Linux:
-bash
-Copy code
-source venv/bin/activate
-Your terminal should now indicate that the virtual environment is active by showing its name in parentheses.
-
-Install Flask:
-
-With the virtual environment activated, install Flask using pip:
-
-To install all the packages listed in requirements.txt, run:
-pip install -r requirements.txt
-This will install the exact versions of the packages that your project requires
+### Continue the next steps:
+1. Clone the repository from the GitHub Repository Link.
+2. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
