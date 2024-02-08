@@ -14,17 +14,17 @@ First, ensure that Python is installed on your system. You can download it from 
 
 Navigate to your project directory in the terminal or command prompt. Then, create a virtual environment using the following command:
 
-"```bash"
-python -m venv myenv 
+1. ```bash
+   python -m venv myenv 
 
 After creating the virtual environment, you need to activate it.
 
 ## On Windows:
-   ```cmd
+1. ```cmd
    myenv\Scripts\activate
 
 ## On macOS and Linux:
-   ```bash
+1. ```bash
    source myenv/bin/activate
 
 ### Continue the next steps:
