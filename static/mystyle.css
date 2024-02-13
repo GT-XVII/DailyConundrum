@@ -4,10 +4,10 @@
 }
 
 :root {
-    --primary-color: 19, 246, 239; /* Example primary color */
-    --secondary-color: 250, 117, 195; /* Example secondary color */
-    --accent-color: 248, 128, 63; /* Example accent color */
-    --background-color: 245, 254, 255; /* Example background color */
+    --primary-color: 19, 246, 239;
+    --secondary-color: 250, 117, 195;
+    --accent-color: 248, 128, 63;
+    --background-color: 245, 254, 255;
 }
 
 #anagram {
@@ -34,7 +34,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #F5FEFF;
+    background-color: rgba(var(--background-color));
     z-index: 0;
 }
 

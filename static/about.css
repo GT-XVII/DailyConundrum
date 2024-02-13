@@ -5,6 +5,18 @@
     height:100vh;
 }
 
+.area, .col-md-7.position-absolute.offset-md-3, .about {
+    margin-left: 100px;
+}
+
+.area, .about {
+    overflow-y: auto; /* Allows vertical scrolling within the element if needed */
+    height: 100vh; /* Or adjust based on your layout needs */
+    margin-right: 90px;
+    padding-bottom: 10%;
+    padding-right: 5%;
+}
+
 .circles{
     position: absolute;
     top: 0;
