@@ -1,7 +1,6 @@
 .scoreElement {
-    background-color: lightgrey;
+    background-color: rgba(var(--background-color));
     padding: 1ch;
-    border: 1px solid darkgray;
 }
 
 .scoreboard {
@@ -9,13 +8,32 @@
     justify-content: flex-start;
     justify-items: center;
     flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgba(var(--background-color));
+
 }
 
 .scoreboardHeader {
     padding: 2ch;
-    background-color: darkcyan;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
 }
 
 .bodyContainer{
     overflow: scroll;
+}
+
+.scoreboard ol {
+    list-style: none; /* Removes default list numbers */
+    counter-reset: my-awesome-counter; /* Initializes a counter */
+}
+.scoreboard ol li {
+    counter-increment: my-awesome-counter; /* Increments the counter */
+    position: relative; /* Needed for absolute positioning of the pseudo-element */
+}
+.scoreboard ol li::before {
+    content: counter(my-awesome-counter) ". "; /* Displays the counter */
+    color: #F8803F; /* Example: Sets the font color to orange, for numbers only */
+    position: absolute; /* Positions the pseudo-element containing the counter */
+    left: -20px; /* Adjust as necessary */
 }
