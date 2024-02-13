@@ -1,7 +1,9 @@
-body{
-    background: #3399ff;
+.col-md-6 {
+    overflow-y: auto;
+    max-height: 90vh;
+    margin-bottom: 100px;
+    height: auto;
 }
-
 
 .circle{
     position: absolute;
