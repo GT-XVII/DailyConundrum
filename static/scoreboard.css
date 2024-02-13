@@ -24,16 +24,16 @@
 }
 
 .scoreboard ol {
-    list-style: none; /* Removes default list numbers */
-    counter-reset: my-awesome-counter; /* Initializes a counter */
+    list-style: none; 
+    counter-reset: my-awesome-counter; 
 }
 .scoreboard ol li {
-    counter-increment: my-awesome-counter; /* Increments the counter */
-    position: relative; /* Needed for absolute positioning of the pseudo-element */
+    counter-increment: my-awesome-counter;
+    position: relative; 
 }
 .scoreboard ol li::before {
-    content: counter(my-awesome-counter) ". "; /* Displays the counter */
-    color: #F8803F; /* Example: Sets the font color to orange, for numbers only */
-    position: absolute; /* Positions the pseudo-element containing the counter */
-    left: -20px; /* Adjust as necessary */
+    content: counter(my-awesome-counter) ". ";
+    color: rgba(var(--accent-color));
+    position: relative;
+    text-align: center;
 }

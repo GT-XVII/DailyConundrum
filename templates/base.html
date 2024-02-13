@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<body>
 <head>
     {% block head %}
     <meta charset="UTF-8">
@@ -14,7 +15,6 @@
     <title>{% block title %}Daily Conundrum{% endblock %}</title>
     {% endblock %}
 </head>
-<body>
     <main>
         <div class="header">
             <img src="{{ url_for('static', filename='Daily_Logo.png') }}" alt="Daily Conundrum Logo" height="45" width="45">
