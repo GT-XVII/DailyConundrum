@@ -9,7 +9,7 @@
     justify-items: center;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    background-color: rgba(var(--background-color));
+    background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(181, 232, 255));
 
 }
 
