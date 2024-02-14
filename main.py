@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, get_flashed_messages
+from flask import Flask, jsonify, render_template, request, redirect, url_for, flash, session, get_flashed_messages
 from flask_bcrypt import Bcrypt
 import json
 
@@ -111,6 +111,12 @@ def scoreboard():
 @app.route("/about", methods=["GET"])
 def about():
     return render_template("about.html")
+
+@app.route('/reviews')
+def reviews():
+    with open('reviews.json') as file:
+        reviews_data = json.load(file)
+    return jsonify(reviews_data)
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
