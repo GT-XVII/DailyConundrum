@@ -75,7 +75,7 @@ class DailyConundrum {
                 alert("Time's up!");
                 this.isTimerActive = false;  
                 timerElement.style.pointerEvents = 'auto'; 
-                timerElement.innerText = "You didn't get the word!";
+                timerElement.innerText = "Restart the game";
                 this.saveScore(this.playerName, this.score);
             }
         }, 1000);
@@ -141,8 +141,13 @@ class DailyConundrum {
 
     startGame() {
         this.startTimer();
-        this.showAnagram();
         this.wordsPlayed = [];
+        this.countdown = 30;
+        this.word = this.setWord();
+        this.showAnagram();
+        this.score = 0;
+        const scoreElement = document.getElementById('score');
+        scoreElement.innerHTML = `Score: ${this.score}`;
     }  
 }
 
