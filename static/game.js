@@ -119,8 +119,10 @@ class DailyConundrum {
     }
 
     saveScore(playerName, score) {
+        if(score > 0){
         this.storedScores.push({ name: playerName, score: score });
         localStorage.setItem('scores', JSON.stringify(this.storedScores));
+        }
     }
 
     loadScores() {
