@@ -92,13 +92,22 @@ class DailyConundrum {
     listenToInput() {
         const submitButton = document.getElementById('checkGuess');
         submitButton.addEventListener('click', () => {
-            this.handleGuess();
+            if(this.countdown >= 0){
+                this.handleGuess();
+            }else{
+                return;
+            }
+                
         });
 
         const userGuessInput = document.getElementById('userGuess');
         userGuessInput.addEventListener('keyup', (event) => {
             if (event.key === 'Enter') {
-                this.handleGuess();
+                if(this.countdown >= 0){
+                    this.handleGuess();
+                }else{
+                    return;
+                }
             }
         });
     }
