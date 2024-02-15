@@ -59,6 +59,11 @@ class DailyConundrum {
         anagram.innerText = wordArr.join('');
     }
 
+    showRightAnswer() {
+        const anagram = document.getElementById('anagram');
+        anagram.innerHTML = `The right answer was: ${this.word}`;
+    }
+
     startTimer() {
         if (this.isTimerActive) {
             return;  
@@ -72,10 +77,10 @@ class DailyConundrum {
 
             if (this.countdown < 0) {
                 clearInterval(timerInterval);
-                alert("Time's up!");
                 this.isTimerActive = false;  
-                timerElement.style.pointerEvents = 'auto'; 
+                timerElement.style.pointerEvents = 'auto';
                 timerElement.innerText = "Restart the game";
+                this.showRightAnswer();
                 this.saveScore(this.playerName, this.score);
             }
         }, 1000);
@@ -87,13 +92,22 @@ class DailyConundrum {
     listenToInput() {
         const submitButton = document.getElementById('checkGuess');
         submitButton.addEventListener('click', () => {
-            this.handleGuess();
+            if(this.countdown >= 0){
+                this.handleGuess();
+            }else{
+                return;
+            }
+                
         });
 
         const userGuessInput = document.getElementById('userGuess');
         userGuessInput.addEventListener('keyup', (event) => {
             if (event.key === 'Enter') {
-                this.handleGuess();
+                if(this.countdown >= 0){
+                    this.handleGuess();
+                }else{
+                    return;
+                }
             }
         });
     }
@@ -104,15 +118,12 @@ class DailyConundrum {
         const scoreElement = document.getElementById('score');
     
         if (userGuess === correctAnswer) {
-            alert('Congratulations! You got the word!');
             this.score += this.countdown;
             scoreElement.innerText = `Score: ${this.score}`;
             this.countdown = 30;
             this.storeWordPlayed();
             this.word = this.setWord();
             this.showAnagram();
-        } else {
-            alert('Oops! That\'s not the correct word. Try again!');
         }
     
         document.getElementById('userGuess').value = '';

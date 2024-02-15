@@ -17,25 +17,4 @@ const showRules = () => {
 
         body.style.overflow = 'auto';
     }
-    
-    console.log('button pressed');
 }
-
-fetch('/reviews')
-  .then(response => response.json())
-  .then(data => {
-    const reviewSection = document.getElementById('review-section');
-    reviewSection.innerHTML = '';
-    data.forEach(review => {
-      reviewSection.innerHTML += `
-        <div class="review">
-          <p><strong>${review.name}</strong> (${review.date}) - ${review.rating} stars</p>
-          <p>${review.comment}</p>
-        </div>
-      `;
-    });
-  })
-  .catch(error => {
-    console.error('Error fetching reviews:', error);
-    document.getElementById('review-section').innerHTML = 'Error loading reviews.';
-  });

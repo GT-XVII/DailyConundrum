@@ -112,12 +112,6 @@ def scoreboard():
 def about():
     return render_template("about.html")
 
-@app.route('/reviews')
-def reviews():
-    with open('reviews.json') as file:
-        reviews_data = json.load(file)
-    return jsonify(reviews_data)
-
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     submission_success = False
