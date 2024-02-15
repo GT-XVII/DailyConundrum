@@ -98,7 +98,6 @@
     text-align: center;
     background-color: rgba(var(--secondary-color), 0.15);
     left: 0;
-    margin-bottom: 100vh;
 }
 
 .menuContainer a {
