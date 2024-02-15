@@ -25,7 +25,8 @@
 
 .scoreboard ol {
     list-style: none; 
-    counter-reset: my-awesome-counter; 
+    counter-reset: my-awesome-counter;
+    overflow-y: auto; 
 }
 .scoreboard ol li {
     counter-increment: my-awesome-counter;
