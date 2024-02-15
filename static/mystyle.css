@@ -65,7 +65,6 @@
     top: 50px;
     height: 100vh;
     z-index: 0;
-    margin-left: 10px;
     margin-top: 10px;
     background-color: rgba(var(--background-color));
 }
@@ -99,8 +98,6 @@
     text-align: center;
     background-color: rgba(var(--secondary-color), 0.15);
     left: 0;
-    border-radius: 10px;
-    margin-bottom: 100vh;
 }
 
 .menuContainer a {
