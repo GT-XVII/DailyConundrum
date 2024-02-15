@@ -17,8 +17,6 @@ const showRules = () => {
 
         body.style.overflow = 'auto';
     }
-    
-    console.log('button pressed');
 }
 
 fetch('/reviews')
