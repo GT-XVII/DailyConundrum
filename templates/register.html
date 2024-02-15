@@ -2,15 +2,17 @@
 {% block head %}
   {{ super() }}
 <script src="{{ url_for('static', filename='login.js') }}"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 {% endblock %}
 
 {% block content %}
-<div class="frame1">
+
   <div class="bodyContainer">
     <form method="post" action="/register">
       <div class="form-group">
         <h2 class="text-uppercase text-center mb-5">Create an account</h2>
       <div class="form-group">
+        <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
       </div>
       <div class="form-group">
@@ -30,5 +32,4 @@
     </form>
   </div>
   </div>
-</div>
 {% endblock %}
