@@ -86,13 +86,14 @@
     overflow: hidden;
     overflow-y: hidden;
     background-color: rgba(var(--primary-color));
+    display: flex;
+    align-items: center;
 }
 
 .header img {
     float:left;
     padding-right: 3ch;
     margin-left: 4ch;
-    margin-top: 2.5px;
     box-sizing: content-box;
 }
 
