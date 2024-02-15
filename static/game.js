@@ -7,7 +7,6 @@ class DailyConundrum {
     playerName;
     score;
     
-
     constructor(){
         this.wordArr = [
             'glowingly','untreated','ambushing','paparazzi','embezzled','frustrate',
@@ -28,6 +27,67 @@ class DailyConundrum {
         this.listenToInput();
     }
 
+    handleGuess() {
+        const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
+        const correctAnswer = this.word.toLowerCase().trim();
+        const scoreElement = document.getElementById('score');
+    
+        if (userGuess === correctAnswer) {
+            this.score += this.countdown;
+            scoreElement.innerText = `Score: ${this.score}`;
+            this.countdown = 60;
+            this.storeWordPlayed();
+            this.word = this.setWord();
+            this.showAnagram();
+        }
+    
+        document.getElementById('userGuess').value = '';
+    }
+
+    listenToInput() {
+        const submitButton = document.getElementById('checkGuess');
+        submitButton.addEventListener('click', () => {
+            if(this.countdown >= 0){
+                this.handleGuess();
+            }else{
+                return;
+            }
+                
+        });
+
+        const userGuessInput = document.getElementById('userGuess');
+        userGuessInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                if(this.countdown >= 0){
+                    this.handleGuess();
+                }else{
+                    return;
+                }
+            }
+        });
+    }
+
+    loadName() {
+        const storedName = JSON.parse(localStorage.getItem('storedName'));
+        if (storedName) {
+            const playerName = document.getElementById('playerName');
+            playerName.innerText = storedName;
+            return playerName.innerText;
+        }
+        
+    }
+
+    loadScores() {
+        return JSON.parse(localStorage.getItem('scores')) || [];
+    }
+    
+    saveScore(playerName, score) {
+        if(score > 0){
+        this.storedScores.push({ name: playerName, score: score });
+        localStorage.setItem('scores', JSON.stringify(this.storedScores));
+        }
+    }
+
     setWord() {
         const i = Math.floor(Math.random()*(this.wordArr.length-1));
         const word = this.wordArr[i];
@@ -35,15 +95,9 @@ class DailyConundrum {
             this.countdown = -1;
         }
         if(this.wordsPlayed.includes(word)){
-            console.log('ping');
             this.setWord();
         }
         return word
-    }
-
-    storeWordPlayed() {
-        this.wordsPlayed.push(this.word);
-        console.log(this.wordsPlayed);
     }
 
     showAnagram() {
@@ -63,6 +117,17 @@ class DailyConundrum {
         const anagram = document.getElementById('anagram');
         anagram.innerHTML = `The right answer was: ${this.word}`;
     }
+
+    startGame() {
+        this.startTimer();
+        this.wordsPlayed = [];
+        this.countdown = 60;
+        this.word = this.setWord();
+        this.showAnagram();
+        this.score = 0;
+        const scoreElement = document.getElementById('score');
+        scoreElement.innerHTML = `Score: ${this.score}`;
+    }  
 
     startTimer() {
         if (this.isTimerActive) {
@@ -89,92 +154,14 @@ class DailyConundrum {
         timerElement.style.pointerEvents = 'none';
     }
 
-    listenToInput() {
-        const submitButton = document.getElementById('checkGuess');
-        submitButton.addEventListener('click', () => {
-            if(this.countdown >= 0){
-                this.handleGuess();
-            }else{
-                return;
-            }
-                
-        });
-
-        const userGuessInput = document.getElementById('userGuess');
-        userGuessInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                if(this.countdown >= 0){
-                    this.handleGuess();
-                }else{
-                    return;
-                }
-            }
-        });
+    storeWordPlayed() {
+        this.wordsPlayed.push(this.word);
+        console.log(this.wordsPlayed);
     }
-
-    handleGuess() {
-        const userGuess = document.getElementById('userGuess').value.trim().toLowerCase();
-        const correctAnswer = this.word.toLowerCase().trim();
-        const scoreElement = document.getElementById('score');
-    
-        if (userGuess === correctAnswer) {
-            this.score += this.countdown;
-            scoreElement.innerText = `Score: ${this.score}`;
-            this.countdown = 60;
-            this.storeWordPlayed();
-            this.word = this.setWord();
-            this.showAnagram();
-        }
-    
-        document.getElementById('userGuess').value = '';
-    }
-
-    saveScore(playerName, score) {
-        if(score > 0){
-        this.storedScores.push({ name: playerName, score: score });
-        localStorage.setItem('scores', JSON.stringify(this.storedScores));
-        }
-    }
-
-    loadScores() {
-        return JSON.parse(localStorage.getItem('scores')) || [];
-    }
-    
-    loadName() {
-        const storedName = JSON.parse(localStorage.getItem('storedName'));
-        if (storedName) {
-            const playerName = document.getElementById('playerName');
-            playerName.innerText = storedName;
-            return playerName.innerText;
-        }
-        
-    }
-
-    startGame() {
-        this.startTimer();
-        this.wordsPlayed = [];
-        this.countdown = 60;
-        this.word = this.setWord();
-        this.showAnagram();
-        this.score = 0;
-        const scoreElement = document.getElementById('score');
-        scoreElement.innerHTML = `Score: ${this.score}`;
-    }  
 }
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const game = new DailyConundrum();
     const startButton = document.getElementById('startButton');
     startButton.addEventListener('click', () => {game.startGame();});
 });
-
-const clearField = () => {
-    const textfield = document.getElementById('userGuess');
-    if(textfield.value === 'Type your guess here'){
-        textfield.value = '';
-    }else{
-        return;
-    }
-  
-}
