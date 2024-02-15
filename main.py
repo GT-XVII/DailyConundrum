@@ -94,23 +94,31 @@ def login():
         else:
             error = "Incorrect login details"
 
-    return render_template("login.html", error=error)
+    if session.get('logged_in'):
+        login_text = "Log Out"
+    else:
+        login_text = "Log In"
+
+    return render_template("login.html", error=error,login_text=login_text)
 
 @app.route("/game", methods=["GET"])
 def game():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return render_template("game.html")
+    login_text = "Log Out" if session.get('logged_in') else "Log In"
+    return render_template("game.html",login_text=login_text)
 
 @app.route("/scoreboard", methods=["GET"])
 def scoreboard():
     if not session.get('logged_in'):
         return redirect(url_for('login'))
-    return render_template("scoreboard.html")
+    login_text = "Log Out" if session.get('logged_in') else "Log In"
+    return render_template("scoreboard.html",login_text=login_text)
 
 @app.route("/about", methods=["GET"])
 def about():
-    return render_template("about.html")
+    login_text = "Log Out" if session.get('logged_in') else "Log In"
+    return render_template("about.html", login_text=login_text)
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
@@ -119,7 +127,8 @@ def contact():
         submission_success = True
         flash('Submission was successful. We will be in touch shortly!', 'success')
         return redirect(url_for('contact'))
-    return render_template("contact.html", submission_success=submission_success)
+    login_text = "Log Out" if session.get('logged_in') else "Log In"
+    return render_template("contact.html", submission_success=submission_success, login_text=login_text)
 
 @app.route('/logout')
 def logout():

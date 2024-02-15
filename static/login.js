@@ -1,4 +1,5 @@
 function validateForm() {
+    const logInButton = document.getElementById('logInButton')
     var inputname = $('#username').val();
     var inputpassword = $('#password').val();
 
