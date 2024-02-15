@@ -20,7 +20,7 @@ class DailyConundrum {
         this.wordsPlayed = [];
         this.word = this.setWord();
         this.isTimerActive = false;
-        this.countdown = 30;
+        this.countdown = 60;
         this.storedScores = this.loadScores();
         this.playerName = this.loadName();
         this.score = 0;
@@ -120,7 +120,7 @@ class DailyConundrum {
         if (userGuess === correctAnswer) {
             this.score += this.countdown;
             scoreElement.innerText = `Score: ${this.score}`;
-            this.countdown = 30;
+            this.countdown = 60;
             this.storeWordPlayed();
             this.word = this.setWord();
             this.showAnagram();
@@ -153,7 +153,7 @@ class DailyConundrum {
     startGame() {
         this.startTimer();
         this.wordsPlayed = [];
-        this.countdown = 30;
+        this.countdown = 60;
         this.word = this.setWord();
         this.showAnagram();
         this.score = 0;
