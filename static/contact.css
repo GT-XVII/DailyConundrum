@@ -11,6 +11,7 @@
     background: rgb(186, 245, 255);
     animation: ripple 15s infinite;
     box-shadow: 0px 0px 1px 0px #508fb9;
+    z-index: -1;
 }
 
 .small{
