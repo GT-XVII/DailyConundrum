@@ -131,7 +131,7 @@
 }
 
 #startButton {
-    background-color: rgba(var(--primary-color));
+    background-color: rgba(var(--accent-color));
     position: relative;
     width: 16ch;
     height: 6ch;
