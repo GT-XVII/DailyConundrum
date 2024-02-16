@@ -12,6 +12,8 @@
 
 #anagram {
     margin: 1ch;
+    font-size: 2ch;
+    font-stretch: wider;
 }
 
 #blur {
