@@ -1,8 +1,11 @@
 .area{
-    background: rgba(var(--background-color));  
-    background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+    background: linear-gradient(to top, rgb(245, 254, 255), rgb(181, 232, 255));
     width: 100%;
     height:100vh;
+}
+
+.frame {
+    background: linear-gradient(to top, rgb(245, 254, 255), rgb(181, 232, 255));
 }
 
 .area, .col-md-7.position-absolute.offset-md-4, .about {
@@ -10,8 +13,8 @@
 }
 
 .area, .about {
-    overflow-y: auto; /* Allows vertical scrolling within the element if needed */
-    height: 100vh; /* Or adjust based on your layout needs */
+    overflow-y: auto;
+    height: 100vh;
     margin-right: 90px;
     padding-bottom: 10%;
     padding-right: 5%;
