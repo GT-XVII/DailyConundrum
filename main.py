@@ -67,21 +67,18 @@ def register():
         password = request.form.get('password')
 
         if not username or not email or not password:
-            get_flashed_messages(with_categories=True)
             flash("Username, email, and password cannot be empty.", "error")
             return render_template("register.html")
 
         message = add_user(username, email, password)
         if message == "User added successfully.":
-            get_flashed_messages(with_categories=True)
             flash("Account created successfully. Please log in.", "success")
             return redirect(url_for('login'))
         else:
             flash(message, "error")
-        
-    login_text = "Log in"
+            return render_template("register.html")
 
-    return render_template("register.html", login_text=login_text)
+    return render_template("register.html")
 
 @app.route("/", methods=["GET", "POST"])
 def login():
