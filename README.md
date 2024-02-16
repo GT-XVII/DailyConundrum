@@ -1,8 +1,9 @@
-# Flask Web Application Documentation
+# Daily Conundrum Installation Guide
 
 ## Overview
 
-This Flask application is a web-based platform designed for user registration, authentication, and interaction. It features user account management, a simple game, a scoreboard, an about page, and a contact form.
+Our website features different elements such as: user account management, a simple game, a scoreboard, an about page, and a contact form.
+It has not been published yet, so you need to store it locally. To access our website you need to first download our repository and save it in a easy to find seperate folder. After you have downloaded the repository, you can follow the following steps to install Flask (a Python library for handling some of the back-end tasks of our website). 
 
 ## Installation
 
@@ -32,3 +33,4 @@ After creating the virtual environment, you need to activate it.
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
+3. Run the main.py file and a local link should appear.
