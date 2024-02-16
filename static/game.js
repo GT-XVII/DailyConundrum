@@ -14,7 +14,8 @@ class DailyConundrum {
             'postponed','itchyness','positions','provinces','rebooting','quickened',
             'insurance','righteous','answering','waterfall','dragonfly','fractured',
             'ducklings','godparent','proposing','dangerous','ponytails','dentistry',
-            'megawatts','battering','numbering','pendulums','thrusting','downstage'
+            'megawatts','battering','numbering','pendulums','thrusting','downstage',
+            'conundrum',
         ];
         this.wordsPlayed = [];
         this.word = this.setWord();
