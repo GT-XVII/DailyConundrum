@@ -4,7 +4,7 @@ html {
 
 .bg {
     animation:slide 3s ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    background-image: linear-gradient(-60deg, rgb(19, 246, 239) 50%, rgb(250, 117, 195) 50%);
     bottom:0;
     left:-50%;
     opacity:.5;
@@ -47,6 +47,17 @@ body {
     text-align:center;
     top:50%;
     transform:translate(-50%, -50%);
+}
+
+#createAcc {
+    color: rgba(248, 128, 63);
+}
+
+#createAcc:Hover {
+    cursor: pointer;
+    color: rgba(248, 128, 63);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 @keyframes slide {
