@@ -134,10 +134,10 @@
     background-color: rgba(var(--accent-color));
     position: relative;
     width: 16ch;
-    height: 6ch;
+    height: 16ch;
     margin: 2ch;
     text-align: center;
-    border-radius: 3ch;
+    border-radius: 8ch;
     border: none;
     display: flex;
     justify-content: center;
