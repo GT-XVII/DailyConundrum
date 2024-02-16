@@ -4,7 +4,7 @@
         "password": "$2y$04$FdD7WrOItNgw0qhQ1MC.YOlEXMnnJnivN0fBqunt8eTFKBX4CCIWq"
     },
     "Ruan": {
-        "email": "wohnungdreyer@gmail.com",
+        "email": "w@gmail.com",
         "password": "$2b$12$s5fjpXNhTrPi.gcNnQ9e2eh4zQkNlgdeWzmWgYPoNNThideVjNSZm"
     },
     "CasimirG": {
@@ -18,5 +18,9 @@
     "1": {
         "email": "1@gmakiil.com",
         "password": "$2b$12$69OmS1yD/j6Tuv5UMyRw3OtSu7iR3d.l9PilraJ1SZJGI6OaVLgpa"
+    },
+    "Ruan1": {
+        "email": "wohnungdreyer@gmail.com",
+        "password": "$2b$12$JQHIhcqmH7D/eZLiuJ7wUOwgPucAeFZw4otlKh4uk2RXdvHlarime"
     }
 }
