@@ -61,6 +61,7 @@ def add_user(username, email, password):
     
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    login_text = "Log In"
     if request.method == "POST":
         username = request.form.get('username')
         email = request.form.get('email')
@@ -68,7 +69,7 @@ def register():
 
         if not username or not email or not password:
             flash("Username, email, and password cannot be empty.", "error")
-            return render_template("register.html")
+            return render_template("register.html", login_text=login_text)
 
         message = add_user(username, email, password)
         if message == "User added successfully.":
@@ -76,9 +77,10 @@ def register():
             return redirect(url_for('login'))
         else:
             flash(message, "error")
-            return render_template("register.html")
+            
+            return render_template("register.html",login_text=login_text)
 
-    return render_template("register.html")
+    return render_template("register.html", login_text=login_text)
 
 @app.route("/", methods=["GET", "POST"])
 def login():
