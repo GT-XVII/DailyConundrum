@@ -121,6 +121,15 @@
     text-decoration: none;
 }
 
+#scoreboardLink {
+    color: rgba(var(--accent-color), 0.7);
+}
+
+#scoreboardLink:hover {
+    font-weight: bold;
+    text-decoration: none;
+}
+
 #startButton {
     background-color: rgba(var(--primary-color));
     position: relative;
@@ -139,15 +148,6 @@
     cursor: pointer;
     background-color: rgba(var(--primary-color));
     font-weight: bold;
-}
-
-#scoreboardLink {
-    color: rgba(var(--accent-color), 0.7);
-}
-
-#scoreboardLink:hover {
-    font-weight: bold;
-    text-decoration: none;
 }
 
 #userGuess {

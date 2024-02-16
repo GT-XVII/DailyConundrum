@@ -78,8 +78,10 @@ def register():
             return redirect(url_for('login'))
         else:
             flash(message, "error")
+        
+    login_text = "Log in"
 
-    return render_template("register.html")
+    return render_template("register.html", login_text=login_text)
 
 @app.route("/", methods=["GET", "POST"])
 def login():
