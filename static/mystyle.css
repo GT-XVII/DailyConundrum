@@ -146,7 +146,7 @@
 
 #startButton:hover {
     cursor: pointer;
-    background-color: rgba(var(--primary-color));
+    background-color: rgba(var(--accent-color), 0.9);
     font-weight: bold;
 }
 
