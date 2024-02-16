@@ -33,3 +33,4 @@ After creating the virtual environment, you need to activate it.
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
+3. Run the main.py file and a local link should appear.
