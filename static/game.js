@@ -135,24 +135,33 @@ class DailyConundrum {
             return;  
         }
 
-        const timerElement = document.getElementById('startButton');
+        const sunElement = document.getElementById('startButton');
+        const bodyElement = document.querySelector('.bodyContainer');
+        const timeWarningElement = document.getElementById('timeWarning');
 
         const timerInterval = setInterval(() => {
-            timerElement.innerText = `Time left: ${this.countdown}` ;
+            sunElement.innerText = `` ;
             this.countdown--;
-
+            bodyElement.style.background = `linear-gradient(to top, rgb(${245-(60-this.countdown)}, ${254-(60-this.countdown)}, ${255-(60-this.countdown)}), rgb(${181-(60-this.countdown)}, ${232-(60-this.countdown)}, ${255-(60-this.countdown)}))`
+            sunElement.style.top = `${18-this.countdown*0.3}ch`;
+            if(this.countdown <= 10 && this.countdown >= 0){
+                timeWarningElement.innerText = `${this.countdown} seconds left!`;
+            }else{
+                timeWarningElement.innerText = '';
+            }
             if (this.countdown < 0) {
                 clearInterval(timerInterval);
                 this.isTimerActive = false;  
-                timerElement.style.pointerEvents = 'auto';
-                timerElement.innerText = "Restart the game";
+                sunElement.style.pointerEvents = 'auto';
+                sunElement.innerText = "Restart the game";
+                sunElement.style.top = '0';
                 this.showRightAnswer();
                 this.saveScore(this.playerName, this.score);
             }
         }, 1000);
 
         this.isTimerActive = true;  
-        timerElement.style.pointerEvents = 'none';
+        sunElement.style.pointerEvents = 'none';
     }
 
     storeWordPlayed() {

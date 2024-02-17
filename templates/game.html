@@ -8,11 +8,14 @@
 {% block content %}
   <div class="bodyContainer">
     <div id="startButton">Start the game</div>
-    <div id="anagram">The conundrum will appear here!</div>
-    <input type="text" id="userGuess" />
-    <div id="checkGuess">Check your Word</div>
-    <div id="playerName"></div>
-    <div id="score"></div>
-    <a href="/scoreboard" id="scoreboardLink">Scoreboard</a>
+    <div id="timeWarning"></div>
+    <div class="gameDashboard">
+      <div id="anagram">The conundrum will appear here!</div>
+      <input type="text" id="userGuess" />
+      <div id="checkGuess">Check your Word</div>
+      <div id="playerName"></div>
+      <div id="score"></div>
+      <a href="/scoreboard" id="scoreboardLink">Scoreboard</a>
+    </div>
   </div>
 {% endblock %}
