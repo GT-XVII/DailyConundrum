@@ -142,7 +142,7 @@ class DailyConundrum {
         const timerInterval = setInterval(() => {
             sunElement.innerText = `` ;
             this.countdown--;
-            bodyElement.style.background = `linear-gradient(to top, rgb(${245-(60-this.countdown)}, ${254-(60-this.countdown)}, ${255-(60-this.countdown)}), rgb(${181-(60-this.countdown)}, ${232-(60-this.countdown)}, ${255-(60-this.countdown)}))`
+            bodyElement.style.background = `linear-gradient(to top, rgb(${245+(5-this.countdown*0.83)}, ${254-(137-this.countdown*2.28)}, ${255-(60-this.countdown)}), rgb(${181-(60-this.countdown)}, ${232-(60-this.countdown)}, ${255-(60-this.countdown)}))`
             sunElement.style.top = `${18-this.countdown*0.3}ch`;
             if(this.countdown <= 10 && this.countdown >= 0){
                 timeWarningElement.innerText = `${this.countdown} seconds left!`;
