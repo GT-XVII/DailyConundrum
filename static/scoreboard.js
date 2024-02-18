@@ -8,15 +8,22 @@ const addScore = (name, score) => {
 
 const loadScores = () => {
     const scoreboard = document.querySelector('ol');
-    const storedScores = JSON.parse(localStorage.getItem('scores')) || [];
 
-    if (storedScores.length === 0) {
-        scoreboard.innerText = 'No scores available.';
-    } else {
-        storedScores.sort((a, b) => b.score - a.score).forEach(itemData => {
-            addScore(itemData.name, itemData.score);
-        });
-    }
+    fetch('/get_scores') // Fetch scores from Flask server
+    .then(response => response.json())
+    .then(scores => {
+        if (scores.length === 0) {
+            scoreboard.innerText = 'No scores available.';
+        } else {
+            scores.sort((a, b) => b.score - a.score).forEach(itemData => {
+                addScore(itemData.name, itemData.score);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error loading scores:', error);
+        scoreboard.innerText = 'Failed to load scores.';
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {

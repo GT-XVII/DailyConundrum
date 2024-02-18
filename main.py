@@ -136,5 +136,39 @@ def logout():
     session.pop('logged_in', None)
     return redirect(url_for('login'))
 
+@app.route('/save_score', methods=['POST'])
+def save_score():
+    if request.method == 'POST':
+        data = request.get_json()
+        if 'playerName' in data and 'score' in data:
+            player_name = data['playerName']
+            score = data['score']
+            try:
+                with open('scores.json', 'r') as file:
+                    scores = json.load(file)
+            except FileNotFoundError:
+                scores = []
+            
+            scores.append({'name': player_name, 'score': score})
+            
+            with open('scores.json', 'w') as file:
+                json.dump(scores, file, indent=4)
+            
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Invalid data format'})
+    else:
+        return jsonify({'success': False, 'error': 'Method not allowed'})
+
+@app.route('/get_scores', methods=['GET'])
+def get_scores():
+    try:
+        with open('scores.json', 'r') as file:
+            scores = json.load(file)
+        return jsonify(scores)
+    except FileNotFoundError:
+        return jsonify([])
+
+
 if __name__ == '__main__':
     app.run(debug=True)

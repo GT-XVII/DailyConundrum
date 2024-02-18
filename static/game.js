@@ -79,14 +79,36 @@ class DailyConundrum {
     }
 
     loadScores() {
-        return JSON.parse(localStorage.getItem('scores')) || [];
+        fetch('/get_scores')
+        .then(response => response.json())
+        .then(scores => {
+            console.log('Scores:', scores);
+            return scores; // Return the scores array
+        })
+        .catch(error => {
+            console.error('Error fetching scores:', error);
+            return []; // Return an empty array if there's an error
+        });
     }
     
     saveScore(playerName, score) {
-        if(score > 0){
-        this.storedScores.push({ name: playerName, score: score });
-        localStorage.setItem('scores', JSON.stringify(this.storedScores));
-        }
+        const data = { playerName, score };
+        fetch('/save_score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Score saved successfully');
+            } else {
+                console.error('Failed to save score:', data.error);
+            }
+        })
+        .catch(error => console.error('Error saving score:', error));
     }
 
     setWord() {
